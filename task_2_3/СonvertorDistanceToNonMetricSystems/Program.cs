@@ -1,24 +1,15 @@
 ﻿namespace СonvertorDistanceToNonMetricSystems
 {
-    public struct NonMetricSystems
+    public struct Distance
     {
-        public NonMetricSystems(int feet, int inch)
+        public Distance(int feet, int inch)
         {
             this.feet = feet;
-            this.inch = inch;  
+            this.inch = inch;
         }
-        public int feet;
-        public int inch;
+        public int feet = 0;
+        public int inch = 0;
     }
-
-    internal class Distance
-    {
-        public static NonMetricSystems calculate(int inch) {
-            return new NonMetricSystems(inch / 12, inch % 12);    
-        }
-
-    }
-
     internal class Program
     {
         static void Main(string[] args)
@@ -26,9 +17,20 @@
             
             try
             {
-                Console.Write("Enter inch for convert: ");
-                int inch = int.Parse(Console.ReadLine());
-                NonMetricSystems distance = Distance.calculate(inch);
+                int step = 0;
+                int lastStep = 2;
+                Distance distance = new Distance(0, 0);
+                do {
+                    Console.Write("Enter inch:");
+                    int inch = int.Parse(Console.ReadLine());
+                    Console.Write("Enter feet:");
+                    int feet = int.Parse(Console.ReadLine());
+                    distance.feet += feet + (distance.inch + inch) / 12;
+                    distance.inch = (distance.inch + inch) % 12;
+                    Console.WriteLine("and");
+                    step++; 
+                } while (step != lastStep);
+
                 Console.Write($"{distance.feet}' - {distance.inch}\"");
             }
             catch (FormatException e)
@@ -40,5 +42,7 @@
                 Console.WriteLine("An exception was thrown: {0}", e.Message);
             }
         }
+
+
     }
 }
