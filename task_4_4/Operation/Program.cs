@@ -21,7 +21,7 @@ namespace Operation
                     Console.WriteLine("Please enter the triangle side value:");
                     double sideABC = double.Parse(Console.ReadLine());
                     sideA = sideB = sideC = sideABC;
-                    area = Operation.calculateArea(sideA, sideB, sideC);
+                    area = Operation.calculateArea(sideABC);
                 }
                 else if (triangleType == "not")
                 {
@@ -63,6 +63,18 @@ namespace Operation
             {
                 throw new Exception("The side of a triangle cannot be zero");
             }  
+        }
+        public static double calculateArea(double sideABC)
+        {
+            Triangle triangle = new Triangle(sideABC);
+            if (Operation.checkIsTriangle(triangle))
+            {
+                return triangle.calculateArea();
+            }
+            else
+            {
+                throw new Exception("The side of a triangle cannot be zero");
+            }
         }
         // Unable to complete task, because "Any method declaration that uses the override, virtual, or abstract keyword cannot also use the static keyword."
         //public static override double calculateArea(double sideABC)
