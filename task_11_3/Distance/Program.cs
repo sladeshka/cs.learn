@@ -21,6 +21,14 @@
         {
             return new Distance(first.feet - second.feet, first.inch - second.inch);
         }
+        public static bool operator ==(Distance first, Distance second)
+        {
+            return (first.inch + first.feet * 12) == (second.inch + second.feet * 12);
+        }
+        public static bool operator !=(Distance first, Distance second)
+        {
+            return (first.inch + first.feet * 12) != (second.inch + second.feet * 12);
+        }
         #endregion
 
         #region Method
