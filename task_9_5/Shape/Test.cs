@@ -14,7 +14,7 @@ namespace Shape
             Console.WriteLine(circle);
             //Triangle triangle = new(5.00);
             //Console.WriteLine(triangle);
-            Square square = new(5.00);
+            Rectangle square = new(5.00);
             Console.WriteLine(square);
             square.Rotation(360);
             Console.WriteLine(square);

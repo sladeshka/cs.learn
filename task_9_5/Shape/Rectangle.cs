@@ -10,6 +10,9 @@ namespace Shape
     internal class Rectangle : Polygon
     {
         #region Constructors
+        public Rectangle(double sides) : this(sides, sides)
+        {
+        }
         public Rectangle(double sideAB, double sideBC)
         {
             this.Sides = new[] { sideAB, sideBC, sideAB, sideBC };
